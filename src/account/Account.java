@@ -75,7 +75,7 @@ public class Account {
         savingsAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                drawSavingsAccount();
                 JOptionPane.showMessageDialog(null,"You Have Chosen Savings Account", "Savings Account", JOptionPane.INFORMATION_MESSAGE);
             }
         });
@@ -97,6 +97,37 @@ public class Account {
             public void actionPerformed(ActionEvent e) {
                float deposit = bankAccount.deposit(Float.parseFloat(depositAmount.getText()));
                JOptionPane.showMessageDialog(null,deposit,"Amount Deposited",JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        });
+
+        withdraw.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float withdraw = bankAccount.withdraw(Float.parseFloat(withdrawAmount.getText()));
+                JOptionPane.showMessageDialog(null,withdraw,"Amount Withdrawn",JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+
+        mainFrame.setLayout(new GridLayout(2,2));
+        mainFrame.setSize(150,200);
+        mainFrame.setVisible(true);
+    }
+
+    public void drawSavingsAccount(){
+        mainFrame.add(deposit);
+        mainFrame.add(depositAmount);
+        mainFrame.add(withdraw);
+        mainFrame.add(withdrawAmount);
+
+        BankAccount bankAccount = new BankAccount();
+
+        deposit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float deposit = bankAccount.deposit(Float.parseFloat(depositAmount.getText()));
+                JOptionPane.showMessageDialog(null,deposit,"Amount Deposited",JOptionPane.INFORMATION_MESSAGE);
 
             }
         });
